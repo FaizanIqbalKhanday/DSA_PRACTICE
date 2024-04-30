@@ -1,20 +1,24 @@
+//rotate the array at pavit;
 public class Prtc21 {
-    public static void tappingWater(int[] hights){
-        int maxHeight;
-        int[] helpingArray=new int[hights.length];
-        for(int i=0;i<hights.length;i++){
-            if(i==0){
-                maxHeight=hights[i];
+    public static int maximumProfitInStocks(int[] stocks){
+        int profit=0;
+        int n= stocks.length;
+        int buyingPrice=stocks[0];
+        for(int i=0;i<n;i++){
+            if(buyingPrice<stocks[i]){
+                profit=Math.max(stocks[i]-buyingPrice,profit );
             }
-            if(hights[i+1]>hights[i]){
-
+            else {
+                buyingPrice=stocks[i];
             }
-
 
         }
+        return profit;
+
     }
     public static void main(String[] args) {
-        int[] hights={4,2,0,6,3,2,5};
+        int[] stocks={4,2,0,6,3,2,5};
+        System.out.println(maximumProfitInStocks(stocks));
         
     }
     
