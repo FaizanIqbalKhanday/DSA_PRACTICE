@@ -48,8 +48,7 @@ public class Prtc30 {
 
     }
     public static void main(String[] args) {
-        int n=4;
-        int count=0;
+        int n=5;
         char[][] chessboard= new char[n][n];
         for(int i=0;i<chessboard.length;i++){
             for(int j=0;j< chessboard.length;j++){
