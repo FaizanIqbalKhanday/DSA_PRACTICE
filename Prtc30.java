@@ -1,7 +1,7 @@
 // N Queen's problem
 public class Prtc30 {
     public static int solutionCount=0;
-    public static boolean isSafe( char[][] chessBoard, int row, int col){
+    public static boolean isSafeTo( char[][] chessBoard, int row, int col){
         for(int i=row-1;i>=0;i--){
             if(chessBoard[i][col]=='Q'){
                 return false;
@@ -28,7 +28,7 @@ public class Prtc30 {
             return;
         }
         for(int j=0;j< chessBoard.length;j++){
-            if(isSafe(chessBoard, row, j)){
+            if(isSafeTo(chessBoard, row, j)){
 
                 chessBoard[row][j]='Q';
                 nQueens(chessBoard,row+1 );

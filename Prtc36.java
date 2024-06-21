@@ -20,7 +20,6 @@ public class Prtc36 {
         list.add(3);
         list.add(3);
         list.add(3);
-        final (list,3);
 
 
 

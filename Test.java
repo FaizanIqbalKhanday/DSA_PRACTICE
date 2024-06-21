@@ -1,34 +1,110 @@
-
+// basic LinkedList
 
 public class Test {
-  public static void alternativeString(String word1, String word2){
-    if(word1.length()==word2.length()){
-      for(int i=0;i<word1.length();i++){
-        System.out.println(word1+""+word1);
-      }
-     }
-     else if(word1.length()>word2.length()){
-      int i;
-      for( i=0;i<word2.length();i++){
-        System.out.print(word1.charAt(i)+""+word2.charAt(i));
-      }
-      System.out.println(word1.substring(i, word1.length()));
-     }
-     else{
-      int i;
-      for( i=0;i<word1.length();i++){
-        System.out.print(word1.charAt(i)+""+word2.charAt(i));
-      }
-      System.out.println(word2.substring(i, word2.length()));
-     }
+  public static class Node{
+      int data;
+      Node next;
+      public Node(int data){
+          this.data=data;
+          this.next=null;
   }
-    
-    
+
+   }
+   public static int size;
+   public static Node head;
+  public static Node tail;
+   public void addFirst(int data){
+       Node newNode=new Node(data);
+       if(head==null){
+           head=tail=newNode;
+       }
+       size++;
+       newNode.next=head;
+       head=newNode;
+   }
+   public void addLast(int data){
+       Node newNode=new Node(data);
+       size++;
+       tail.next=newNode;
+       tail=newNode;
+   }
+   public void add(int data,int index){
+       if(index==0){
+           addFirst(data);
+       }
+       Node newNode=new Node(data);
+       Node temp=head;
+       int i=0;
+       while(i<index-1){
+           temp=temp.next;
+           i++;
+       }
+       size++;
+       newNode.next=temp.next;
+       temp.next=newNode;
+   }
+   public void print(){
+       if(head==null){
+           System.out.print("null");
+           return;
+       }
+       Node temp=head;
+       while (temp!=null){
+
+           System.out.print(temp.data+"->");
+           temp=temp.next;
+       }
+       System.out.println("null");
+   }
+   public void removeFirst(){
+       if(size==0){
+           System.out.println("ll is empty");
+           size=Integer.MIN_VALUE;
+           return;
+       } else if (size==1) {
+           head=tail=null;
+           size=0;
+           return;
+       }
+       head=head.next;
+       size--;
+   }
+   public void removeLast(){
+       if(size==0){
+           System.out.println("ll is empty");
+           size=Integer.MIN_VALUE;
+           return;
+       } else if (size==1) {
+           head=tail=null;
+           size=0;
+           return;
+       }
+       Node pre=head;
+       for(int i=0;i<size-2;i++){
+           pre=pre.next;
+       }
+       pre.next=null;
+       tail=pre.next;
+       size--;
+   }
+
     public static void main(String[] args) {
-     String word1="ab";
-     String word2="efghi";
-     alternativeString(word1, word2);
-        
+       Test ll=new Test();
+       ll.addFirst(2);
+       ll.addFirst(1);
+       ll.addLast(4);
+       ll.addLast(5);
+       ll.add(3,2);
+       ll.print();
+       System.out.println("size of this ll is "+ll.size);
+       ll.removeFirst();
+        ll.print();
+        System.out.println("size of this ll is "+ll.size);
+        ll.removeLast();
+        ll.print();
+        System.out.println("size of this ll is "+ll.size);
+
+
     }
         
     }
