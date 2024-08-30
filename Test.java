@@ -87,6 +87,33 @@ public class Test {
        tail=pre.next;
        size--;
    }
+   public int ItrSearch(int key){
+       Node temp =head;
+       int i=0;
+       while (temp!=null){
+           if(temp.data==key){
+               System.out.println(key+" is found at Node " +i);
+               return i;
+           }
+           temp=temp.next;
+           i++;
+
+       }
+       System.out.println(key+" is not found");
+       return -1;
+   }
+   public void recSearch(int key, Node temp){
+       if(temp.next==null){
+           System.out.println(key +" is not found");
+           return;
+       }
+       if(temp.data==key){
+           System.out.println(key+ " is found in this node");
+           return;
+       }
+       recSearch(key,temp.next);
+
+   }
 
     public static void main(String[] args) {
        Test ll=new Test();
@@ -96,13 +123,9 @@ public class Test {
        ll.addLast(5);
        ll.add(3,2);
        ll.print();
-       System.out.println("size of this ll is "+ll.size);
-       ll.removeFirst();
-        ll.print();
-        System.out.println("size of this ll is "+ll.size);
-        ll.removeLast();
-        ll.print();
-        System.out.println("size of this ll is "+ll.size);
+       ll.ItrSearch(7);
+       Node currNode=head;
+       ll.recSearch(8,currNode);
 
 
     }
